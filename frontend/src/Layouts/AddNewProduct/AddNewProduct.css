@@ -1,0 +1,58 @@
+.add-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.add-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.add-item div,
+input {
+  width: 100% !important;
+}
+
+.add-item p {
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
+}
+
+.add-item textarea {
+  margin: 0;
+}
+
+.return-button-div {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  text-decoration: none;
+}
+
+.return-button {
+  width: 14rem;
+}
+
+.return-button:hover {
+  cursor: pointer;
+  background-color: brown;
+  color: white;
+}
+
+@media (max-width: 650px) {
+  .add-item-wrapper {
+    width: 375px;
+    max-width: 375px;
+  }
+
+  .add-item-wrapper form {
+    width: 100%;
+  }
+  .add-item {
+    width: 100%;
+  }
+}

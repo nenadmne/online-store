@@ -1,0 +1,66 @@
+.reviews-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    width: 100%;
+  }
+  
+  .reviewer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 0.5rem;
+  }
+  
+  .reviewer p {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+  }
+  
+  .reviewer span {
+    color: darkblue;
+  }
+  
+  
+  .deleted-user {
+    font-style: italic;
+  }
+  
+  .review-wrapper {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    align-items: flex-start;
+    justify-content: left;
+  }
+  
+  .review {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300 bold;
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  
+  @media (max-width: 650px) {
+  
+  }
+  
+  @media (min-width: 1100px) {
+    .header nav {
+      width: calc(90% + 2rem);
+    }
+  }
+  
+  @media (min-width: 1600px) {
+    .header nav {
+      width: calc(92% + 3rem);
+    }
+  }
+  

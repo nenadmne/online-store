@@ -1,0 +1,72 @@
+.edit-information-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+}
+
+.edit-information-div {
+  margin-bottom: 1rem;
+}
+
+.edit-information-div div,
+input {
+  width: 100%;
+}
+
+.edit-information {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.edit-information-div input {
+  color: black;
+}
+
+.edit-information-div textarea,
+.edit-information-div select {
+  margin: 0;
+}
+
+.edit-information form {
+  gap: 1rem;
+  color: black;
+}
+
+.edit-information p {
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
+}
+
+.edit-information textarea,
+input {
+  margin: 0;
+}
+
+.button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button-div button {
+  width: 6.5rem;
+}
+
+@media (max-width: 650px) {
+  .edit-information-wrapper {
+    width: 375px;
+    max-width: 375px;
+  }
+
+  .edit-information textarea,
+  input {
+    margin-bottom: 1rem;
+  }
+}

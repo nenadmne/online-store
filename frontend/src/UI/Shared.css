@@ -1,0 +1,119 @@
+.input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("../Assets/background.jpg");
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrapper {
+  height: fit-content;
+  position: absolute;
+  top: 25%;
+}
+
+.form-wrapper h2 {
+  margin: 0.5rem 0;
+}
+
+.form-wrapper p {
+  font-weight: 300;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.form-wrapper label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-wrapper input {
+  font: inherit;
+  display: block;
+  width: 400px;
+  padding: 0.3rem 0.5rem;
+  outline: none;
+}
+
+.form-wrapper form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  justify-content: space-between;
+}
+
+.form-wrapper form div button {
+  margin-top: 0.5rem;
+}
+
+.form-wrapper a {
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.form-wrapper a button {
+  width: fit-content;
+}
+
+.form-wrapper button {
+  width: 6rem;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.checkbox input {
+  width: 1rem;
+  margin-right: 0 0.5rem 0 0;
+}
+
+.checkbox label {
+  margin: 0;
+}
+
+@media (max-width: 650px) {
+  .form-wrapper {
+    top: 10%;
+    width: 375px;
+  }
+
+  .form-wrapper div,
+  input {
+    width: 100%;
+  }
+
+  .checkbox input {
+    width: 1rem !important;
+  }
+}
+
+@media (min-width: 650px) {
+  .form-wrapper {
+    width: 450px;
+  }
+
+  .form-wrapper div,
+  input {
+    width: 100%;
+  }
+
+  .checkbox input {
+    width: 1rem !important;
+  }
+}

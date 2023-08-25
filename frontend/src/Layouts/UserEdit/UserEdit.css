@@ -1,0 +1,107 @@
+.edit-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-wrapper h2 {
+  margin: 0.5rem 0;
+}
+
+.edit-wrapper label {
+  display: block;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.edit-wrapper input {
+  font: inherit;
+  display: block;
+  width: 400px;
+  padding: 0.3rem 0.5rem;
+  outline: none;
+}
+
+.edit-wrapper form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  justify-content: space-between;
+}
+
+.edit-wrapper form div {
+  margin-bottom: 1rem;
+}
+
+.edit-wrapper form div button {
+  margin-top: 0.5rem;
+}
+
+.edit-wrapper a {
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+  margin: 0;
+  padding: 0;
+}
+
+.edit-wrapper a button {
+  width: fit-content;
+}
+
+.edit-wrapper button {
+  width: 6rem;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.checkbox input {
+  width: 1rem;
+  margin: 0;
+  margin-right: 0.5rem;
+}
+
+.checkbox label {
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media (max-width: 650px) {
+  .edit-wrapper {
+    width: 375px;
+    max-width: 375px;
+  }
+
+  .edit-wrapper input {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .edit-wrapper form {
+    width: 100%;
+    align-items: left;
+    justify-content: left;
+  }
+
+  .checkbox {
+    display: flex;
+    justify-self: left;
+  }
+
+  .checkbox input {
+    width: 1rem;
+  }
+}

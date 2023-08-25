@@ -1,0 +1,37 @@
+.payment-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  width: 450px;
+}
+
+.payment-wrapper h2 {
+  margin: 0;
+}
+
+.payment-wrapper span {
+  font-size: x-large;
+  color: blueviolet;
+  text-decoration: underline;
+  margin: 0 0.5rem;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+
+.tracking {
+  font-weight: 300;
+}
+
+.important {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: firebrick;
+}
+
+@media (max-width: 650px) {
+  .payment-wrapper {
+    width: 375px;
+    max-width: 375px;
+  }
+}

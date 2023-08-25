@@ -1,0 +1,24 @@
+.component-wrapper {
+  display: inline-block;
+  flex-direction: column;
+  width: 700px;
+}
+
+@media (max-width: 650px) {
+  .component-wrapper {
+    width: 337.5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .information-wrapper {
+    width: 100%;
+    max-width: 337.5px;
+  }
+
+  .reviews-div {
+    width: 100%;
+    max-width: 375px;
+  }
+}

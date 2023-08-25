@@ -1,0 +1,17 @@
+.post-review-wrapper {
+  width: 450px;
+}
+
+.post-review-wrapper textarea,
+.post-review-wrapper select {
+  outline: none;
+  margin: 0;
+}
+
+.post-review-wrapper select {
+  margin-top: 1rem;
+}
+
+.confirm-button {
+  margin: 1rem 0;
+}

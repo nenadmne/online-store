@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #333333;
+}
+
+html,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+html {
+  font-family: "Roboto Slab", serif;
+}
+
+body {
+  margin: 0;
+  background-color: #ebebeb;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ebebeb;
+  padding-bottom: 2rem;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid rgb(177, 173, 173);
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  resize: none;
+  width: 100%;
+}
+
+button,
+img {
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #333333;
+  color: white;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: darkgreen;
+  color: white;
+}
+
+.cancel-button:hover {
+  cursor: pointer;
+  background-color: salmon;
+}
+
+.shadow {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.invalid {
+  border: 1px solid red !important;
+  width: 100%;
+}
+
+.invalid-para {
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 650px) {
+  * {
+    font-size: 14px;
+  }
+  body {
+    min-width: 375px;
+    padding-bottom: 5%;
+  }
+
+  html {
+    min-width: 375px;
+  }
+
+  button {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,13 @@
+.reviews-header {
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+.add-rev-button-div {
+  display: flex;
+  justify-content: right;
+}
+
+.reviews-div {
+  width: 100%;
+}

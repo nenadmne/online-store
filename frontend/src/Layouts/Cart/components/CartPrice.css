@@ -1,0 +1,17 @@
+.price-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pay-button {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: right;
+}
+
+.pay-button button {
+  width: 5rem;
+}

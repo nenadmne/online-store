@@ -1,0 +1,17 @@
+.sucess-div {
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  top: 4rem;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background-color: #e0e0e0;
+  font-size: 0.8rem;
+  z-index: 999;
+}
+
+.sucess-div p {
+  color: black;
+}

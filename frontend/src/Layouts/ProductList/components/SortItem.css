@@ -1,0 +1,60 @@
+.sort {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  margin: 0;
+}
+
+@media (max-width: 650px) {
+  .sort-wrapper {
+    width: 100%;
+  }
+
+  .sort-wrapper section {
+    width: 337.5px;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sort-responsive {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort,
+  .sort select {
+    width: 6rem;
+  }
+
+  .add-new-item {
+    justify-content: center;
+  }
+
+  .categories-wrapper button,
+  .add-new-item button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 650px) {
+  .sort,
+  .sort select {
+    width: 8rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .sort,
+  .sort select {
+    width: 10rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .sort,
+  .sort select {
+    width: 12rem;
+  }
+}

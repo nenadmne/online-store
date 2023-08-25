@@ -1,0 +1,20 @@
+.time-date {
+    display: flex;
+    font-size: small;
+    margin: 0;
+    font-weight: 300 bold;
+    font-style: italic;
+    gap: 0.5rem;
+    align-self: flex-end;
+  }
+  
+  @media (max-width: 650px) {
+    .time-date span {
+      font-size: 0.7rem;
+    }
+  
+    .time-date {
+      gap: 0.2rem;
+    }
+  }
+  
