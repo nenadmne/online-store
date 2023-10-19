@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect} from "react";
 import "./SearchItem.css";
 import useInput from "../../../UI/useInput";
 import ProductContext from "../../../Store/context";

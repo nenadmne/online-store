@@ -20,7 +20,6 @@ const ProductList = () => {
   const [id, setId] = useState(null);
 
   const showConfirmationHandler = (itemId) => {
-    console.log("dw");
     setShowConfirmation(true);
     setId(itemId);
   };
