@@ -18,7 +18,7 @@ Before you begin, make sure you have the following prerequisites installed:
 
    cd online-store
 
-3. **Install project dependencies using npm** in the backend and frontend folders:
+3. **Install project dependencies using npm** in the backend and frontend folder:
 
    npm install
 
@@ -30,7 +30,7 @@ Before you begin, make sure you have the following prerequisites installed:
 
 The website you are about to explore is a dynamic online store that caters to the needs of three distinct user states: Admin, User, and Non-Registered User. Each state offers a unique set of functionalities and access rights tailored to their role. Let's delve into what each user state can do:
 
-Admin
+**Admin:**
 As an admin, you wield significant control and responsibilities. Here's what you can do:
 
 Product Management: You have the authority to add, edit, and remove products from the store. This means you can keep the product catalog up to date with the latest offerings.
@@ -39,7 +39,7 @@ User Management: You have the power to manage users on the platform. This includ
 
 Review Management: You can moderate and manage reviews and ratings submitted by users. This ensures that the platform maintains a high level of quality and trustworthiness.
 
-User
+**User:**
 Registered users have their own set of features and functions to enhance their online shopping experience:
 
 Account Management: Users can edit their own profiles, including personal information and preferences. They can also delete their accounts if they choose to do so.
@@ -50,7 +50,7 @@ Order Submission: Users can submit orders for their selected items. These orders
 
 Product Reviews: Users can share their thoughts and experiences by posting reviews and ratings for specific items in the store. This feedback helps other users make informed decisions.
 
-Non-Registered User
+**Non-registered user:**
 For those who haven't registered on the website, the experience is more limited:
 
 Product Browsing: Non-registered users can view the product list and access detailed information about each product.
