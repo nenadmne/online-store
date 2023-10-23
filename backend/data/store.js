@@ -1,11 +1,11 @@
 const mysql = require("mysql2/promise");
-require('dotenv').config(); // Load environment variables from the .env file
+require("dotenv").config(); // Load environment variables from the .env file
 
 const pool = mysql.createPool({
-  host: "localhost",
-  database: "auth",
-  user: "root",
-  password: "1234arsenal",
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
 });
 
 module.exports = pool;
