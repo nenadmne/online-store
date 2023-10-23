@@ -66,7 +66,7 @@
     min-width: 375px;
   }
 
-  .input-wrapper input {
+  .input-wrapper input, .input-wrapper .input-field{
     width: 100%;
     max-width: 400px;
   }

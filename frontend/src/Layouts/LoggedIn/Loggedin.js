@@ -27,8 +27,7 @@ const Loggedin = () => {
     onChangeHandler: changeAgeHandler,
   } = useInput((enteredAge) => enteredAge.trim().length > 0);
 
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const submitHandler = () => {
     setFormIsSubmitted(true);
   };
 
@@ -40,7 +39,7 @@ const Loggedin = () => {
       <Card className="input-wrapper">
         <h2> {`Welcome!`} </h2>
         <p> Please enter your account information </p>
-        <Form method="post" onSubmit={submitHandler}>
+        <Form method="post">
           <div>
             <InputField
               id="name"
@@ -67,7 +66,7 @@ const Loggedin = () => {
             )}
 
             <Select data={data} />
-            <Button label="Confirm" />
+            <Button label="Confirm" onClickHandler={submitHandler}/>
           </div>
           <Link to="/">
             <Button label="Back to homepage" />

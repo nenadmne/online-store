@@ -85,9 +85,11 @@
     max-width: 375px;
   }
 
-  .edit-wrapper input {
+  .edit-wrapper input,
+  .edit-wrapper .input-field {
     width: 100%;
     max-width: 400px;
+    margin-bottom: 0;
   }
 
   .edit-wrapper form {
