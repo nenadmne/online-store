@@ -41,7 +41,7 @@ const ProductProvider = (props) => {
 
   const fetchProductData = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/`);
+      const response = await fetch(`https://online-store-full.onrender.com`);
       checkResponseStatus(response);
       const userData = await response.json();
       setSearchData(userData);
