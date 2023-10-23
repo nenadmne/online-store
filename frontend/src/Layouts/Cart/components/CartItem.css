@@ -47,3 +47,57 @@
 .amount-button-wrapper button:hover {
   background-color: #3f3f3f;
 }
+
+@media (max-width: 650px) {
+  .cart-items {
+    flex-direction: column;
+  }
+  .cart-detail {
+    width: 100%;
+  }
+  .cart-image {
+    width: 100%;
+  }
+  .amount-button-wrapper {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 650px) {
+  .item-wrapper {
+    height: auto;
+  }
+
+  .title-category-price h2 {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 1.2rem;
+  }
+
+  .button-wrapper {
+    align-self: flex-end;
+  }
+}
+
+@media (min-width: 1100px) {
+  .title-category-price h2 {
+    font-size: 1.1rem;
+  }
+
+  .price {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .title-category-price h2 {
+    font-size: 1.2rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
+  }
+}
