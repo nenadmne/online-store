@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, Form, redirect } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, Form, redirect, useActionData } from "react-router-dom";
 import "../../UI/Shared.css";
 import Card from "../../UI/Card";
 import InputField from "../../UI/InputField";
@@ -8,14 +8,25 @@ import Button from "../../UI/Button";
 
 const SignUp = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(null);
+  const data = useActionData();
 
   const changeHandler = () => {
     setSubmitted(false);
   };
 
   const signUpHandler = () => {
+    setValid(null)
     setSubmitted(true);
   };
+
+  useEffect(() => {
+    if (data === false) {
+      setValid(false);
+    } else {
+      setValid(true);
+    }
+  }, [data]);
 
   return (
     <div className="input">
@@ -38,7 +49,9 @@ const SignUp = () => {
               <input type="checkbox" name="checkbox" />
               <label htmlFor="checkbox">I agree to the Terms of Service</label>
             </div>
-            {submitted && <LoginCredentials submitted={submitted} />}
+            {submitted && (
+              <LoginCredentials valid={valid} submitted={submitted} />
+            )}
             <Button onClickHandler={signUpHandler} label="Sign up" />
           </div>
           <Link to="/">
@@ -64,19 +77,22 @@ export async function signUpAction({ request }) {
   );
 
   if (hasEmptyProperty) {
-    return null;
+    return false;
   }
 
-  const response = await fetch("https://online-store-full.onrender.com/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(authData),
-  });
+  const response = await fetch(
+    "https://online-store-full.onrender.com/signup",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(authData),
+    }
+  );
 
   if (!response.ok) {
-    return null;
+    return false;
   }
   return redirect("/");
 }

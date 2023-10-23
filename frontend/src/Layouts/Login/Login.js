@@ -1,5 +1,11 @@
-import { Link, Form, redirect, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import {
+  Link,
+  Form,
+  useSearchParams,
+  useActionData,
+  useNavigate,
+} from "react-router-dom";
+import { useEffect, useState } from "react";
 import Card from "../../UI/Card";
 import InputField from "../../UI/InputField";
 import LoginCredentials from "../../UI/LoginCredentials";
@@ -7,12 +13,16 @@ import "../../UI/Shared.css";
 import Button from "../../UI/Button";
 
 const Login = () => {
-  let [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const params = searchParams.get("user");
+  const navigate = useNavigate();
   const administrator = params === "administrator";
   const username = administrator ? "administrator" : "";
   const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(null);
   const [name, setName] = useState(username);
+
+  const data = useActionData();
 
   const nameChangeHandler = (event) => {
     setName(event.target.value);
@@ -23,7 +33,22 @@ const Login = () => {
     setSubmitted(false);
   };
 
-  const loginHandler = () => {
+  useEffect(() => {
+    if (data === false) {
+      setValid(false);
+    } else if (data === "redirect to loggedin") {
+      setValid(true);
+      navigate(`/loggedin?username=${encodeURIComponent(authData.username)}`);
+    } else if (data === "redirect to homepage") {
+      setValid(true);
+      navigate(`/`);
+    } else {
+      setValid(null)
+    }
+  }, [data]);
+
+  const clickHandler = () => {
+    setValid(null)
     setSubmitted(true);
   };
 
@@ -48,8 +73,10 @@ const Login = () => {
               name="password"
               onChange={passChangeHandler}
             />
-            {submitted && <LoginCredentials submitted={submitted} />}
-            <Button label="Login" onClickHandler={loginHandler} />
+            {submitted && (
+              <LoginCredentials valid={valid} submitted={submitted} />
+            )}
+            <Button label="Login" onClickHandler={clickHandler} />
           </div>
           <Link to="/">
             <Button label="Back to homepage" />
@@ -75,7 +102,7 @@ export async function loginAction({ request }) {
     (value) => value === ""
   );
   if (hasEmptyProperty) {
-    return null;
+    return false;
   }
 
   const response = await fetch("https://online-store-full.onrender.com/login", {
@@ -87,7 +114,7 @@ export async function loginAction({ request }) {
   });
 
   if (!response.ok) {
-    return null;
+    return false;
   }
 
   if (response.ok) {
@@ -109,10 +136,8 @@ export async function loginAction({ request }) {
   const userData = await responseData.json();
 
   if (!userData[0].name && !user) {
-    return redirect(
-      `/loggedin?username=${encodeURIComponent(authData.username)}`
-    );
+    return "redirect to loggedin";
   }
 
-  return redirect("/");
+  return "redirect to homepage";
 }

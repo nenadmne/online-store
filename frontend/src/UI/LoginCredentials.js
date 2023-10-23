@@ -1,35 +1,24 @@
 import { useEffect, useState } from "react";
-import { getAdminToken, getAuthToken } from "../util/auth";
 import "./LoginCredentials.css";
 
 const LoginCredentials = (props) => {
   const [message, setMessage] = useState(null);
-  const token = getAuthToken();
-  const admin = getAdminToken();
-  const currentRoute = window.location.pathname;
 
   const clickHandler = () => {
     setMessage("Loading...");
-    if (currentRoute === "/login") {
-      setTimeout(() => {
-        if (!token && !admin) {
-          setMessage("Invalid user credentials for login!");
-        } else {
-          setMessage(null);
-        }
-      }, 1000);
-    }
-
-    if (currentRoute === "/signup") {
-      setTimeout(() => {
-        setMessage("Invalid user credentials for signup!");
-      }, 1000);
-    }
+    setTimeout(() => {
+      if (props.valid === false) {
+        setMessage("Invalid user credentials for login!");
+      }
+    }, 300);
   };
 
+  console.log(props.valid);
   useEffect(() => {
-    clickHandler();
-  }, [props.submitted === true]);
+    if (props.submitted === true) {
+      clickHandler();
+    }
+  }, [props.submitted, props.valid]);
 
   return <p className="invalid-login"> {message} </p>;
 };
