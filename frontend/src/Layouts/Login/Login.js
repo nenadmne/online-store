@@ -38,7 +38,7 @@ const Login = () => {
       setValid(false);
     } else if (data === "redirect to loggedin") {
       setValid(true);
-      navigate(`/loggedin?username=${encodeURIComponent(authData.username)}`);
+      navigate(`/loggedin?username=${encodeURIComponent(name)}`);
     } else if (data === "redirect to homepage") {
       setValid(true);
       navigate(`/`);
