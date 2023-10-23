@@ -1,11 +1,10 @@
-import React from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import Card from "./Card";
-import "./Confirmation.css";
 import { adminFetch, bearerFetch } from "../util/BearerFatch";
 import { checkResponseStatus } from "../util/ErrorMessages";
 import { removeAuthToken } from "../util/auth";
 import Button from "./Button";
+import "./Confirmation.css";
 
 const ConfirmationModal = (props) => {
   const classes = `confirmation-modal ${props.className}`;
