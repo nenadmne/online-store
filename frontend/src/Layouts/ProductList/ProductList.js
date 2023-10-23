@@ -54,7 +54,7 @@ const ProductList = () => {
   };
 
   const addToCartHandler = async (itemId) => {
-    const response = await bearerFetch("http://localhost:8080/", {
+    const response = await bearerFetch("https://online-store-full.onrender.com/", {
       method: "POST",
       body: JSON.stringify({
         productId: itemId,

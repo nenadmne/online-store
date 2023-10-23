@@ -67,7 +67,7 @@ export async function signUpAction({ request }) {
     return null;
   }
 
-  const response = await fetch("http://localhost:8080/signup", {
+  const response = await fetch("https://online-store-full.onrender.com/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

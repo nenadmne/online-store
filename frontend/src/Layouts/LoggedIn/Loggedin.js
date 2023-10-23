@@ -97,7 +97,7 @@ export async function informationAction({ request }) {
       return null;
     }
 
-    const response = await bearerFetch("http://localhost:8080/logged", {
+    const response = await bearerFetch("https://online-store-full.onrender.com/logged", {
       method: "POST",
       body: JSON.stringify(infoData),
     });
@@ -113,7 +113,7 @@ export async function informationAction({ request }) {
 
 export async function informationLoader() {
   try {
-    const response = await bearerFetch(`http://localhost:8080/logged`);
+    const response = await bearerFetch(`https://online-store-full.onrender.com/logged`);
     checkResponseStatus(response);
     const responseData = await response.json();
     return responseData.cities;

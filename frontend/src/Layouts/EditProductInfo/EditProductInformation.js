@@ -233,7 +233,7 @@ export async function editProductAction({ request, params }) {
       return null;
     }
     const response = await adminFetch(
-      `http://localhost:8080/product/edit/${encodeURIComponent(id)}`,
+      `https://online-store-full.onrender.com/product/edit/${encodeURIComponent(id)}`,
       {
         method: "PUT",
         body: JSON.stringify(editedData),

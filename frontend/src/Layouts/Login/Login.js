@@ -78,7 +78,7 @@ export async function loginAction({ request }) {
     return null;
   }
 
-  const response = await fetch("http://localhost:8080/login", {
+  const response = await fetch("https://online-store-full.onrender.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export async function loginAction({ request }) {
   }
 
   const responseData = await fetch(
-    `http://localhost:8080/login?username=${encodeURIComponent(
+    `https://online-store-full.onrender.com/login?username=${encodeURIComponent(
       authData.username
     )}`
   );

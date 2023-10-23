@@ -27,7 +27,7 @@ const ReviewProduct = () => {
     const fetchProductData = async () => {
       try {
         const response = await bearerFetch(
-          `http://localhost:8080/product/review/${params}`
+          `https://online-store-full.onrender.com/product/review/${params}`
         );
         checkResponseStatus(response);
         const responseData = await response.json();
@@ -130,7 +130,7 @@ export async function reviewProductAction({ request, params }) {
 
     try {
       const response = await bearerFetch(
-        `http://localhost:8080/product/review/${id}`,
+        `https://online-store-full.onrender.com/product/review/${id}`,
         {
           method: "POST",
           body: JSON.stringify(revData),
@@ -149,7 +149,7 @@ export async function reviewProductLoader({ params }) {
   const id = params.id;
 
   const response = await bearerFetch(
-    `http://localhost:8080/product/review/${id}`
+    `https://online-store-full.onrender.com/product/review/${id}`
   );
   checkResponseStatus(response);
 

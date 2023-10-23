@@ -114,7 +114,9 @@ export default AdminOrders;
 
 export const AdminOrdersLoader = async () => {
   try {
-    const response = await adminFetch(`http://localhost:8080/admin/orders`);
+    const response = await adminFetch(
+      `https://online-store-full.onrender.com/admin/orders`
+    );
     checkResponseStatus(response);
     const responseData = await response.json();
     return responseData;
