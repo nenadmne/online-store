@@ -13,7 +13,7 @@ const SearchItem = () => {
   };
 
   useEffect(() => {
-    prodCtx.searchItem(enteredSearch);
+    prodCtx.searchItem(enteredSearch.toLowerCase());
   }, [enteredSearch]);
 
   return (
