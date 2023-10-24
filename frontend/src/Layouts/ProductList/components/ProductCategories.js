@@ -50,7 +50,7 @@ export default ProductCategories;
 
 export async function categoriesLoader() {
   try {
-    const response = await fetch(`ttps://online-store-full.onrender.com/`);
+    const response = await fetch(`https://online-store-full.onrender.com/`);
     const items = await response.json();
     const uniqueCategories = [...new Set(items.map((item) => item.category))];
     return { uniqueCategories, items };

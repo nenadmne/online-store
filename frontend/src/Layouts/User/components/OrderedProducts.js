@@ -15,7 +15,7 @@ const OrderedProducts = (props) => {
 
   const orderedProductsLoader = async () => {
     const response = await bearerFetch(
-      "ttps://online-store-full.onrender.com/user/cart/confirmed-payment"
+      "https://online-store-full.onrender.com/user/cart/confirmed-payment"
     );
     checkResponseStatus(response);
     const responseData = await response.json();
@@ -28,7 +28,7 @@ const OrderedProducts = (props) => {
 
   const cancelHandler = async () => {
     await bearerFetch(
-      "ttps://online-store-full.onrender.com/user/cart/confirmed-payment",
+      "https://online-store-full.onrender.com/user/cart/confirmed-payment",
       {
         method: "DELETE",
       }

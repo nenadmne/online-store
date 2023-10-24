@@ -54,12 +54,12 @@ export default ProductDetails;
 export const detailLoader = async ({ params }) => {
   const token = getAuthToken();
   try {
-    const response = await fetch(`ttps://online-store-full.onrender.com`);
+    const response = await fetch(`https://online-store-full.onrender.com`);
     const responseData = await response.json();
 
     if (token) {
       const responseRev = await bearerFetch(
-        `ttps://online-store-full.onrender.com/product/review/${params.id}`
+        `https://online-store-full.onrender.com/product/review/${params.id}`
       );
       if (responseRev.ok) {
         const responseRevData = await responseRev.json();

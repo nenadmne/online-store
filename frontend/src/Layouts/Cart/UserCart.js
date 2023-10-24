@@ -24,12 +24,12 @@ const UserCart = () => {
   };
 
   const payHandler = async () => {
-    const response = await bearerFetch("ttps://online-store-full.onrender.com/user/cart");
+    const response = await bearerFetch("https://online-store-full.onrender.com/user/cart");
     checkResponseStatus(response);
     const responseData = await response.json();
     prodCtx.addBoughtItems(responseData);
 
-    await bearerFetch("ttps://online-store-full.onrender.com/user/cart", {
+    await bearerFetch("https://online-store-full.onrender.com/user/cart", {
       method: "DELETE",
     });
     prodCtx.deleteCartItems();
