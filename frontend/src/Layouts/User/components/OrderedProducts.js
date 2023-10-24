@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import Card from "../../../UI/Card";
-import "./OrderedProducts.css";
 import ProductContext from "../../../Store/context";
 import { checkResponseStatus } from "../../../util/ErrorMessages";
 import { bearerFetch } from "../../../util/BearerFatch";
 import Timestamp from "../../../UI/TimeStamp";
 import BoughtProducts from "./BoughtProducts";
 import Button from "../../../UI/Button";
+import "./OrderedProducts.css";
 
 const OrderedProducts = (props) => {
   const prodCtx = useContext(ProductContext);
@@ -19,7 +19,6 @@ const OrderedProducts = (props) => {
     );
     checkResponseStatus(response);
     const responseData = await response.json();
-    console.log(responseData)
     setOrder(responseData);
   };
 
@@ -37,6 +36,7 @@ const OrderedProducts = (props) => {
     deleteBoughtItems();
   };
 
+  console.log(boughtItems)
   return (
     <div className="user-order-wrapper">
       <Card className="confirmed-wrapper">
