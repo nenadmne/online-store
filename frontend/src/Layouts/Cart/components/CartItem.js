@@ -11,7 +11,7 @@ const CartItem = (props) => {
   const prodCtx = useContext(ProductContext);
 
   const removeHandler = async (id) => {
-    const response = await bearerFetch("https://online-store-full.onrender.com/user/cart", {
+    const response = await bearerFetch("ttps://online-store-full.onrender.com/user/cart", {
       method: "POST",
       body: JSON.stringify({ productId: id }),
     });
@@ -22,7 +22,7 @@ const CartItem = (props) => {
 
   const addHandler = async (id) => {
     try {
-      const response = await bearerFetch("https://online-store-full.onrender.com/", {
+      const response = await bearerFetch("ttps://online-store-full.onrender.com/", {
         method: "POST",
         body: JSON.stringify({ productId: id }),
       });

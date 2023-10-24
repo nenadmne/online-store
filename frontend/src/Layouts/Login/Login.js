@@ -52,7 +52,7 @@ const Login = () => {
     }
 
     const response = await fetch(
-      "https://online-store-full.onrender.com/login",
+      "ttps://online-store-full.onrender.com/login",
       {
         method: "POST",
         headers: {
@@ -79,7 +79,7 @@ const Login = () => {
     }
 
     const responseData = await fetch(
-      `https://online-store-full.onrender.com/login?username=${encodeURIComponent(
+      `ttps://online-store-full.onrender.com/login?username=${encodeURIComponent(
         authData.username
       )}`
     );

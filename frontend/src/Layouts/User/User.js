@@ -47,7 +47,7 @@ const User = () => {
 
   const submitHandler = async (data) => {
     const passwordData = data;
-    const response = await bearerFetch("https://online-store-full.onrender.com/user", {
+    const response = await bearerFetch("ttps://online-store-full.onrender.com/user", {
       method: "PUT",
       body: JSON.stringify(passwordData),
     });
@@ -94,7 +94,7 @@ export default User;
 
 export async function userLoader() {
   try {
-    const response = await bearerFetch(`https://online-store-full.onrender.com/user`);
+    const response = await bearerFetch(`ttps://online-store-full.onrender.com/user`);
     checkResponseStatus(response);
     const userData = await response.json();
     const userInfo = userData.userInfo;

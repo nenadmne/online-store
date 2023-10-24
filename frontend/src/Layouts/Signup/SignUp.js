@@ -46,7 +46,7 @@ const SignUp = () => {
     }
 
     const response = await fetch(
-      "https://online-store-full.onrender.com/signup",
+      "ttps://online-store-full.onrender.com/signup",
       {
         method: "POST",
         headers: {

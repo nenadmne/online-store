@@ -21,7 +21,7 @@ const AdminUsers = () => {
 
   const deleteHandler = async (id) => {
     try {
-      const response = await adminFetch(`https://online-store-full.onrender.com/admin/users`, {
+      const response = await adminFetch(`ttps://online-store-full.onrender.com/admin/users`, {
         method: "DELETE",
         body: JSON.stringify({ id }),
       });
@@ -40,7 +40,7 @@ const AdminUsers = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await adminFetch(`https://online-store-full.onrender.com/admin/users`, {
+      const response = await adminFetch(`ttps://online-store-full.onrender.com/admin/users`, {
         method: "POST",
         body: JSON.stringify({ search }),
       });
@@ -89,7 +89,7 @@ export default AdminUsers;
 
 export const AdminUsersLoader = async () => {
   try {
-    const response = await adminFetch(`https://online-store-full.onrender.com/admin/users`);
+    const response = await adminFetch(`ttps://online-store-full.onrender.com/admin/users`);
     checkResponseStatus(response);
     const responseData = await response.json();
     return responseData;

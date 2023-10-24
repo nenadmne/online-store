@@ -32,7 +32,7 @@ export default ConfirmationModal;
 
 export async function userAction() {
   try {
-    const response = await bearerFetch("https://online-store-full.onrender.com/user", {
+    const response = await bearerFetch("ttps://online-store-full.onrender.com/user", {
       method: "DELETE",
     });
     checkResponseStatus(response);
@@ -46,7 +46,7 @@ export async function userAction() {
 
 export async function deleteOrderAction(id) {
   try {
-    const response = await adminFetch("https://online-store-full.onrender.com/admin/orders", {
+    const response = await adminFetch("ttps://online-store-full.onrender.com/admin/orders", {
       method: "DELETE",
       body: JSON.stringify({ id }),
     });
@@ -60,7 +60,7 @@ export async function deleteOrderAction(id) {
 
 export async function postOrderAction(id) {
   try {
-    const response = await adminFetch("https://online-store-full.onrender.com/admin/orders", {
+    const response = await adminFetch("ttps://online-store-full.onrender.com/admin/orders", {
       method: "POST",
       body: JSON.stringify({ id }),
     });
@@ -74,7 +74,7 @@ export async function postOrderAction(id) {
 
 export async function addProductAction(item) {
   try {
-    const response = await adminFetch(`https://online-store-full.onrender.com/product/add`, {
+    const response = await adminFetch(`ttps://online-store-full.onrender.com/product/add`, {
       method: "POST",
       body: JSON.stringify(item),
     });
@@ -89,7 +89,7 @@ export async function addProductAction(item) {
 
 export const deleteItemAction = async (id) => {
   try {
-    const response = await adminFetch(`https://online-store-full.onrender.com/`, {
+    const response = await adminFetch(`ttps://online-store-full.onrender.com/`, {
       method: "DELETE",
       body: JSON.stringify({ id: id }),
     });
@@ -105,7 +105,7 @@ export async function editProductLoader({ params }) {
   const id = params.id;
   try {
     const response = await adminFetch(
-      `https://online-store-full.onrender.com/product/edit/${encodeURIComponent(id)}`
+      `ttps://online-store-full.onrender.com/product/edit/${encodeURIComponent(id)}`
     );
     checkResponseStatus(response);
 

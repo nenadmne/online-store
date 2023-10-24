@@ -38,3 +38,18 @@
   margin-bottom: 0 !important;
   text-align: start;
 }
+
+
+@media (max-width: 1400px) {
+  .bought-price {
+    flex-direction: column-reverse;
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+  }
+  .bought-price div {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}

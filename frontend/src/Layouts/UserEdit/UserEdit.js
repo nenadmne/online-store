@@ -123,7 +123,7 @@ export default UserEdit;
 
 export async function editLoader() {
   try {
-    const response = await bearerFetch(`https://online-store-full.onrender.com/user/edit`);
+    const response = await bearerFetch(`ttps://online-store-full.onrender.com/user/edit`);
     checkResponseStatus(response);
     const data = await response.json();
 
@@ -148,7 +148,7 @@ export async function editAction({ request }) {
       country: data.get("country"),
     };
 
-    const response = await bearerFetch("https://online-store-full.onrender.com/user/edit", {
+    const response = await bearerFetch("ttps://online-store-full.onrender.com/user/edit", {
       method: "PUT",
       body: JSON.stringify(authData),
     });
