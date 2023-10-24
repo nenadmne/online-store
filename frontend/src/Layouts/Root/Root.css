@@ -71,6 +71,7 @@
   flex-direction: row;
   justify-self: right;
   gap: 1rem;
+  white-space: noWrap;
 }
 
 .admin-btn-div {
@@ -83,6 +84,7 @@
 .admin-btn-div button {
   width: 5rem;
   background-color: #e6f7ff;
+  height: 100%;
 }
 
 .btn-div button:hover,
@@ -159,6 +161,7 @@
 
   .cart-wrapper {
     width: 50%;
+    margin-right: 0;
   }
 
   .header nav {
@@ -173,7 +176,7 @@
 
   .btn-div button,
   .admin-btn-div button {
-    width: 4rem;
+    width: 4.5rem;
   }
 
   .admin-btn-div {
