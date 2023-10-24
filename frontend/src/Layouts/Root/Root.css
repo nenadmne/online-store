@@ -73,6 +73,12 @@
   gap: 1rem;
 }
 
+.admin-btn-div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .btn-div button,
 .admin-btn-div button {
   width: 5rem;
@@ -89,16 +95,6 @@
 
 .admin-edit-wrapper {
   margin-right: 1rem;
-}
-
-.admin-btn-div {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.admin-btn-div button {
-  width: 5rem;
 }
 
 .cart-wrapper {
@@ -168,6 +164,20 @@
   .header nav {
     justify-content: space-between;
     width: 337.5px;
+  }
+
+  .btn-div {
+    margin-left: 2.5rem;
+    gap: 0.5rem;
+  }
+
+  .btn-div button,
+  .admin-btn-div button {
+    width: 4rem;
+  }
+
+  .admin-btn-div {
+    justify-content: right;
   }
 }
 

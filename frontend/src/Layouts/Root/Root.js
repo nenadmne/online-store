@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
-import "./Root.css";
 import facebookImage from "../../Assets/facebook.png";
 import twitterImage from "../../Assets/twitter.png";
 import instagramImage from "../../Assets/instagram.png";
@@ -14,12 +13,15 @@ import {
 } from "../../util/auth";
 import ProductContext from "../../Store/context";
 import Button from "../../UI/Button";
+import "./Root.css";
 
 function RootLayout() {
   const token = getAuthToken();
   const adminToken = getAdminToken();
+
   const prodCtx = useContext(ProductContext);
   const { cart } = prodCtx;
+
   const amount = cart.reduce((total, item) => total + item.amount, 0);
   const [bumpCart, setBumpCart] = useState(false);
 
