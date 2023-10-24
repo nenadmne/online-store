@@ -10,7 +10,7 @@ import Button from "../../../UI/Button";
 
 const OrderedProducts = (props) => {
   const prodCtx = useContext(ProductContext);
-  const { boughtItems } = prodCtx;
+  const { boughtItems, deleteBoughtItems} = prodCtx;
   const [order, setOrder] = useState();
 
   const orderedProductsLoader = async () => {
@@ -19,6 +19,7 @@ const OrderedProducts = (props) => {
     );
     checkResponseStatus(response);
     const responseData = await response.json();
+    console.log(responseData)
     setOrder(responseData);
   };
 
@@ -27,14 +28,13 @@ const OrderedProducts = (props) => {
   }, []);
 
   const cancelHandler = async () => {
-    const response = await bearerFetch(
+    await bearerFetch(
       "https://online-store-full.onrender.com/user/cart/confirmed-payment",
       {
         method: "DELETE",
       }
     );
-    checkResponseStatus(response);
-    prodCtx.deleteBoughtItems();
+    deleteBoughtItems();
   };
 
   return (

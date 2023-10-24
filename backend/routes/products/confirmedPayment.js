@@ -20,12 +20,14 @@ router.delete("/user/cart/confirmed-payment", verifyToken, async (req, res) => {
       [existingUser[0].id]
     );
 
+    console.log(existingUser)
+
     res.status(200).json(products);
   } catch (error) {
-    console.error("Error adding item:", error);
+    console.error("Error deleting order:", error);
     res
       .status(500)
-      .json({ message: "Adding item failed. Please try again later." });
+      .json({ message: "Delete order failed. Please try again later." });
   }
 });
 
