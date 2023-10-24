@@ -24,7 +24,6 @@
 
 .form-wrapper p {
   font-weight: 300;
-  margin-bottom: 1rem;
   font-style: italic;
 }
 
@@ -52,7 +51,7 @@
 }
 
 .form-wrapper form div button {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .form-wrapper a {

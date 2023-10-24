@@ -6,8 +6,8 @@ import ProductProvider from "./Store/contextProvider";
 import EditProductInformation, {editProductAction} from "./Layouts/EditProductInfo/EditProductInformation";
 import AddNewProduct from "./Layouts/AddNewProduct/AddNewProduct";
 import RootLayout from "./Layouts/Root/Root";
-import Login, { loginAction } from "./Layouts/Login/Login";
-import SignUp, { signUpAction } from "./Layouts/Signup/SignUp";
+import Login from "./Layouts/Login/Login";
+import SignUp from "./Layouts/Signup/SignUp";
 import Loggedin,{informationAction, informationLoader} from "./Layouts/LoggedIn/Loggedin";
 import User, { userLoader } from "./Layouts/User/User";
 import UserEdit, {
@@ -106,13 +106,11 @@ function App() {
       path: "/login",
       element: <Login />,
       // errorElement: <ErrorPage />,
-      action: loginAction,
     },
     {
       path: "/signup",
       element: <SignUp />,
       // errorElement: <ErrorPage />,
-      action: signUpAction,
     },
   ]);
 

@@ -1,98 +1,104 @@
-import { useState, useEffect } from "react";
-import { Link, Form, redirect, useActionData } from "react-router-dom";
-import "../../UI/Shared.css";
+import { useState } from "react";
+import { Link, useNavigate} from "react-router-dom";
 import Card from "../../UI/Card";
 import InputField from "../../UI/InputField";
 import LoginCredentials from "../../UI/LoginCredentials";
 import Button from "../../UI/Button";
+import "../../UI/Shared.css";
 
 const SignUp = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [valid, setValid] = useState(null);
-  const data = useActionData();
+  const navigate = useNavigate();
 
-  const changeHandler = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const nameChangeHandler = (event) => {
+    setName(event.target.value);
+    setSubmitted(false);
+    setFailed(false);
+  };
+
+  const passChangeHandler = (event) => {
+    setPassword(event.target.value);
+    setFailed(false);
     setSubmitted(false);
   };
 
-  const signUpHandler = () => {
-    setValid(null)
+  const submitHandler = async (event) => {
+    event.preventDefault();
     setSubmitted(true);
-  };
+    setFailed(false);
 
-  useEffect(() => {
-    if (data === false) {
-      setValid(false);
-    } else {
-      setValid(true);
+    const authData = {
+      username: name,
+      password: password,
+    };
+
+    const hasEmptyProperty = Object.values(authData).some(
+      (value) => value === ""
+    );
+
+    if (hasEmptyProperty) {
+      setFailed(true);
+      return;
     }
-  }, [data]);
+
+    const response = await fetch(
+      "https://online-store-full.onrender.com/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(authData),
+      }
+    );
+
+    if (!response.ok) {
+      setFailed(true);
+      return;
+    }
+
+    return navigate("/");
+  };
 
   return (
     <div className="input">
       <Card className="form-wrapper">
-        <Form method="post">
+        <form onSubmit={submitHandler} method="post">
           <div>
             <InputField
               type="text"
               name="username"
               placeholder="etc. John Doe"
-              onChange={changeHandler}
+              value={name}
+              onChange={nameChangeHandler}
             />
             <InputField
               type="password"
               name="password"
               placeholder="minimum 6 characters"
-              onChange={changeHandler}
+              value={password}
+              onChange={passChangeHandler}
             />
             <div className="checkbox">
               <input type="checkbox" name="checkbox" />
               <label htmlFor="checkbox">I agree to the Terms of Service</label>
             </div>
             {submitted && (
-              <LoginCredentials valid={valid} submitted={submitted} />
+              <LoginCredentials failed={failed} submitted={submitted} />
             )}
-            <Button onClickHandler={signUpHandler} label="Sign up" />
+            <Button type="submit" label="Sign up" />
           </div>
           <Link to="/">
             <Button label="Back to homepage" />
           </Link>
-        </Form>
+        </form>
       </Card>
     </div>
   );
 };
 
 export default SignUp;
-
-export async function signUpAction({ request }) {
-  const data = await request.formData();
-  const authData = {
-    username: data.get("username"),
-    password: data.get("password"),
-  };
-
-  const hasEmptyProperty = Object.values(authData).some(
-    (value) => value === ""
-  );
-
-  if (hasEmptyProperty) {
-    return false;
-  }
-
-  const response = await fetch(
-    "https://online-store-full.onrender.com/signup",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(authData),
-    }
-  );
-
-  if (!response.ok) {
-    return false;
-  }
-  return redirect("/");
-}

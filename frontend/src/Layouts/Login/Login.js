@@ -1,64 +1,104 @@
-import {
-  Link,
-  Form,
-  useSearchParams,
-  useActionData,
-  useNavigate,
-} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import Card from "../../UI/Card";
 import InputField from "../../UI/InputField";
 import LoginCredentials from "../../UI/LoginCredentials";
-import "../../UI/Shared.css";
 import Button from "../../UI/Button";
+import "../../UI/Shared.css";
 
 const Login = () => {
   const [searchParams] = useSearchParams();
-  const params = searchParams.get("user");
   const navigate = useNavigate();
+
+  const params = searchParams.get("user");
   const administrator = params === "administrator";
   const username = administrator ? "administrator" : "";
-  const [submitted, setSubmitted] = useState(false);
-  const [valid, setValid] = useState(null);
-  const [name, setName] = useState(username);
 
-  const data = useActionData();
+  const [submitted, setSubmitted] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [name, setName] = useState(username);
+  const [password, setPassword] = useState("");
 
   const nameChangeHandler = (event) => {
     setName(event.target.value);
     setSubmitted(false);
+    setFailed(false);
   };
 
-  const passChangeHandler = () => {
+  const passChangeHandler = (event) => {
+    setPassword(event.target.value);
+    setFailed(false);
     setSubmitted(false);
   };
 
-  useEffect(() => {
-    if (data === false) {
-      setValid(false);
-    } else if (data === "redirect to loggedin") {
-      setValid(true);
-      navigate(`/loggedin?username=${encodeURIComponent(name)}`);
-    } else if (data === "redirect to homepage") {
-      setValid(true);
-      navigate(`/`);
-    } else {
-      setValid(null)
-    }
-  }, [data]);
-
-  const clickHandler = () => {
-    setValid(null)
+  const submitHandler = async (event) => {
+    event.preventDefault();
     setSubmitted(true);
+    setFailed(false);
+
+    const authData = {
+      user: username,
+      username: name,
+      password: password,
+    };
+
+    const hasEmptyProperty = Object.values(
+      authData.name || authData.password
+    ).some((value) => value === "");
+
+    if (hasEmptyProperty) {
+      setFailed(true);
+      return;
+    }
+
+    const response = await fetch(
+      "https://online-store-full.onrender.com/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(authData),
+      }
+    );
+
+    if (!response.ok) {
+      setFailed(true);
+      return;
+    }
+
+    if (response.ok) {
+      const resData = await response.json();
+      const token = resData.token;
+
+      if (username === "administrator") {
+        localStorage.setItem("admin", token);
+      } else {
+        localStorage.setItem("token", token);
+      }
+    }
+
+    const responseData = await fetch(
+      `https://online-store-full.onrender.com/login?username=${encodeURIComponent(
+        authData.username
+      )}`
+    );
+    const userData = await responseData.json();
+
+    if (!userData[0].name && !username) {
+      return navigate(`/loggedin?username=${encodeURIComponent(name)}`);
+    }
+
+    return navigate("/");
   };
 
   return (
     <div className="input">
       <Card className="form-wrapper">
-        <Form method="post">
+        <form onSubmit={submitHandler}>
           <div>
             <label htmlFor="username">
-              {administrator ? "Administrator" : "UserName"}
+              {administrator ? "Administrator" : "Username"}
             </label>
             <input
               id="username"
@@ -71,73 +111,21 @@ const Login = () => {
               id="password"
               type="password"
               name="password"
+              value={password}
               onChange={passChangeHandler}
             />
             {submitted && (
-              <LoginCredentials valid={valid} submitted={submitted} />
+              <LoginCredentials submitted={submitted} failed={failed} />
             )}
-            <Button label="Login" onClickHandler={clickHandler} />
+            <Button type="submit" label="Login" />
           </div>
           <Link to="/">
             <Button label="Back to homepage" />
           </Link>
-        </Form>
+        </form>
       </Card>
     </div>
   );
 };
 
 export default Login;
-
-export async function loginAction({ request }) {
-  const user = new URLSearchParams(window.location.search).get("user");
-  const data = await request.formData();
-  const authData = {
-    user: user,
-    username: data.get("username"),
-    password: data.get("password"),
-  };
-
-  const hasEmptyProperty = Object.values(authData).some(
-    (value) => value === ""
-  );
-  if (hasEmptyProperty) {
-    return false;
-  }
-
-  const response = await fetch("https://online-store-full.onrender.com/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(authData),
-  });
-
-  if (!response.ok) {
-    return false;
-  }
-
-  if (response.ok) {
-    const resData = await response.json();
-    const token = resData.token;
-
-    if (user === "administrator") {
-      localStorage.setItem("admin", token);
-    } else {
-      localStorage.setItem("token", token);
-    }
-  }
-
-  const responseData = await fetch(
-    `https://online-store-full.onrender.com/login?username=${encodeURIComponent(
-      authData.username
-    )}`
-  );
-  const userData = await responseData.json();
-
-  if (!userData[0].name && !user) {
-    return "redirect to loggedin";
-  }
-
-  return "redirect to homepage";
-}
