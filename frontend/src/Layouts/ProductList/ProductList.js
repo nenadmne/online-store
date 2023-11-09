@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useContext } from "react";
 import ProductExplorer from "./components/ProductExplorer";
-import "./ProductList.css";
 import image from "../../Assets/Loading.png";
 import ConfirmationModal, { deleteItemAction } from "../../UI/Confirmation";
 import ProductContext from "../../Store/context";
 import { bearerFetch } from "../../util/BearerFatch";
 import Success from "../../UI/Success";
 import ProductItem from "./components/ProductItem";
+import "./ProductList.css";
 
 const ProductList = () => {
   const prodCtx = useContext(ProductContext);
@@ -54,12 +54,15 @@ const ProductList = () => {
   };
 
   const addToCartHandler = async (itemId) => {
-    const response = await bearerFetch("https://online-store-full.onrender.com/", {
-      method: "POST",
-      body: JSON.stringify({
-        productId: itemId,
-      }),
-    });
+    const response = await bearerFetch(
+      "https://online-store-full.onrender.com/",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          productId: itemId,
+        }),
+      }
+    );
     const [responseData] = await response.json();
     prodCtx.addCartItem(responseData);
   };
