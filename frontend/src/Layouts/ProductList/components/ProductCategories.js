@@ -45,18 +45,22 @@ const ProductCategories = ({ closeHandler, changeCat, show }) => {
 
   return (
     <Card className={`category-wrapper ${show ? "open" : "closed"}`}>
-      {uniqueCats.map((item) => (
-        <Button
-          label={item}
-          key={item}
-          onClickHandler={() => clickHandler(item)}
-          className={
-            selectedCategory === item
-              ? "selected-category"
-              : "not-selected-category"
-          }
-        />
-      ))}
+      {uniqueCats && items ? (
+        uniqueCats.map((item) => (
+          <Button
+            label={item}
+            key={item}
+            onClickHandler={() => clickHandler(item)}
+            className={
+              selectedCategory === item
+                ? "selected-category"
+                : "not-selected-category"
+            }
+          />
+        ))
+      ) : (
+        <p>"Please wait until server gets live!"</p>
+      )}
     </Card>
   );
 };
