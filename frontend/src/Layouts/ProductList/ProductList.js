@@ -11,8 +11,8 @@ import "./ProductList.css";
 const ProductList = () => {
   const prodCtx = useContext(ProductContext);
   const { items, removeItem } = prodCtx;
-  console.log(items);
-
+  console.log(items)
+  
   const [itemsToShow, setItemsToShow] = useState(12);
   const [loading, setLoading] = useState(false);
 
@@ -69,13 +69,6 @@ const ProductList = () => {
   };
 
   const hasMoreItemsToShow = itemsToShow < items.length;
-
-  console.log(items)
-  if (!items) {
-    return (
-      <div> Please wait until connection with server is established! </div>
-    );
-  }
 
   return (
     <Fragment>

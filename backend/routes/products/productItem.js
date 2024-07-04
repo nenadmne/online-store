@@ -86,3 +86,34 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 module.exports = router;
+
+// router.post("/special", async (req, res) => {
+//   try {
+//     const data = req.body;
+//     console.log(data)
+//     for (const product of data) {
+//       await db.query(
+//         `INSERT INTO products (title, description, price, discount_percentage, rating, stock, brand, category, thumbnail, images)
+//          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+//         [
+//           product.title,
+//           product.description,
+//           product.price,
+//           product.discountPercentage, // Ensure this matches your data structure
+//           product.rating, // Ensure this matches your data structure
+//           product.stock,
+//           product.brand,
+//           product.category,
+//           product.thumbnail,
+//           JSON.stringify(product.images) // Assuming images is an array
+//         ]
+//       );
+//     }
+
+//   } catch (error) {
+//     console.error("Error adding item to cart:", error);
+//     res
+//       .status(500)
+//       .json({ message: "Failed to add item to cart. Please try again later." });
+//   }
+// });

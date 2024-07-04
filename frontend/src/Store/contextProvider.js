@@ -16,7 +16,9 @@ const ProductProvider = (props) => {
   const fetchCartItems = async () => {
     try {
       if (token) {
-        const response = await bearerFetch(`https://online-store-full.onrender.com/logged`);
+        const response = await bearerFetch(
+          `https://online-store-full.onrender.com/logged`
+        );
         checkResponseStatus(response);
         const responseData = await response.json();
         setCartItems(responseData.products);
@@ -29,7 +31,9 @@ const ProductProvider = (props) => {
   const fetchBoughtItems = async () => {
     try {
       if (token) {
-        const response = await bearerFetch(`https://online-store-full.onrender.com/user/cart`);
+        const response = await bearerFetch(
+          `https://online-store-full.onrender.com/user/cart`
+        );
         checkResponseStatus(response);
         const responseData = await response.json();
         setBoughtItems(responseData);
