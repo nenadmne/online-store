@@ -35,7 +35,7 @@ function App() {
     {
       path: "/",
       element: <RootLayout />,
-      // errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
@@ -105,12 +105,12 @@ function App() {
     {
       path: "/login",
       element: <Login />,
-      // errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "/signup",
       element: <SignUp />,
-      // errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
     },
   ]);
 
