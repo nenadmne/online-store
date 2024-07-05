@@ -61,12 +61,6 @@ const ProductProvider = (props) => {
     fetchBoughtItems();
   }, [token]);
 
-  useEffect(() => {
-    fetchProductData();
-    fetchCartItems();
-    fetchBoughtItems();
-  }, []);
-
   const addProductHandler = (item) => {
     const addedItem = {
       id: item.id,

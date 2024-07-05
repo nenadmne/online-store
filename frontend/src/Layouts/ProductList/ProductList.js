@@ -1,12 +1,14 @@
 import React, { Fragment, useState, useContext } from "react";
 import ProductExplorer from "./components/ProductExplorer";
-import image from "../../Assets/Loading.png";
 import ConfirmationModal, { deleteItemAction } from "../../UI/Confirmation";
 import ProductContext from "../../Store/context";
 import { bearerFetch } from "../../util/BearerFatch";
 import Success from "../../UI/Success";
 import ProductItem from "./components/ProductItem";
 import "./ProductList.css";
+
+const image =
+  "https://res.cloudinary.com/dtiuw0ams/image/upload/v1720177446/Loading_lbcxrn.png";
 
 const ProductList = () => {
   const prodCtx = useContext(ProductContext);
@@ -80,11 +82,12 @@ const ProductList = () => {
           <p> No items found </p>
         </div>
       )}
-      {!items || items === undefined && (
-        <div className="loading">
-          <p> Connecting to server . . . </p>
-        </div>
-      )}
+      {!items ||
+        (items === undefined && (
+          <div className="loading">
+            <p> Connecting to server . . . </p>
+          </div>
+        ))}
       {items.length !== 0 && (
         <ul className="list-wrapper">
           {items.slice(0, itemsToShow).map((item) => (

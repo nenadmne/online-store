@@ -1,10 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
-import facebookImage from "../../Assets/facebook.png";
-import twitterImage from "../../Assets/twitter.png";
-import instagramImage from "../../Assets/instagram.png";
-import cartImage from "../../Assets/cart.png";
-import homeImage from "../../Assets/home.png";
 import {
   getAdminToken,
   getAuthToken,
@@ -14,6 +9,17 @@ import {
 import ProductContext from "../../Store/context";
 import Button from "../../UI/Button";
 import "./Root.css";
+
+const facebookImage =
+  "https://res.cloudinary.com/dtiuw0ams/image/upload/v1720177446/facebook_pisihj.png";
+const twitterImage =
+  "https://res.cloudinary.com/dtiuw0ams/image/upload/v1720177446/twitter_mc0x0g.png";
+const instagramImage =
+  "https://res.cloudinary.com/dtiuw0ams/image/upload/v1720177446/instagram_vkqftd.png";
+const cartImage =
+  "https://res.cloudinary.com/dtiuw0ams/image/upload/v1720177446/cart_wpm33d.png";
+const homeImage =
+  "https://res.cloudinary.com/dtiuw0ams/image/upload/v1720177446/home_omed6c.png";
 
 function RootLayout() {
   const token = getAuthToken();
