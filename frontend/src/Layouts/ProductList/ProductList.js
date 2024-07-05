@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import ProductExplorer from "./components/ProductExplorer";
 import ConfirmationModal, { deleteItemAction } from "../../UI/Confirmation";
 import ProductContext from "../../Store/context";
@@ -13,7 +13,11 @@ const image =
 const ProductList = () => {
   const prodCtx = useContext(ProductContext);
   const { loaded, items, removeItem } = prodCtx;
-  console.log(loaded);
+  const loadingMessages = [
+    "Connecting to server...",
+    "Can take up to 2 minutes...",
+  ];
+  const [messageIndex, setMessageIndex] = useState(0);
 
   const [itemsToShow, setItemsToShow] = useState(12);
   const [loading, setLoading] = useState(false);
@@ -72,12 +76,24 @@ const ProductList = () => {
 
   const hasMoreItemsToShow = itemsToShow < items.length;
 
+  useEffect(() => {
+    if (loaded && items.length === 0) {
+      const interval = setInterval(() => {
+        setMessageIndex(
+          (prevIndex) => (prevIndex + 1) % loadingMessages.length
+        );
+      }, 3000); // Change message every 3 seconds (adjust as needed)
+
+      return () => clearInterval(interval);
+    }
+  }, [loaded, items.length, loadingMessages.length]);
+
   return (
     <Fragment>
       {actionIsSuccessful && (
         <Success message="Successfully removed product!" />
       )}
-      <ProductExplorer items={items} />
+      {!loaded && <ProductExplorer items={items} />}
       {!loaded && items.length === 0 && (
         <div className="loading">
           <p> No items found </p>
@@ -98,8 +114,9 @@ const ProductList = () => {
       )}
       {loaded && items.length === 0 && (
         <div className="loading">
-          <p> Connecting to server. . . </p>
+          <p> {loadingMessages[messageIndex]} </p>
           <p> Please wait! </p>
+          <img src={image} alt="Loading image" />
         </div>
       )}
       {showConfirmation && (
