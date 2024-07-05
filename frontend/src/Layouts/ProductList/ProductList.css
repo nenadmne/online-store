@@ -69,6 +69,8 @@
   text-shadow: 0.5rem -0.5rem 0.5rem rgba(0, 0, 0, 1);
   letter-spacing: 1rem;
   gap: 1rem;
+  padding: 1rem;
+  text-align: center;
   img {
     width: 4rem;
     box-shadow: none;
@@ -107,7 +109,7 @@
     width: 100%;
   }
   .loading {
-    font-size: 1rem;
+    font-size: 1.25rem;
     img {
       width: 2rem;
     }
