@@ -11,7 +11,7 @@ import "./ProductList.css";
 const ProductList = () => {
   const prodCtx = useContext(ProductContext);
   const { items, removeItem } = prodCtx;
-  
+
   const [itemsToShow, setItemsToShow] = useState(12);
   const [loading, setLoading] = useState(false);
 
@@ -75,9 +75,14 @@ const ProductList = () => {
         <Success message="Successfully removed product!" />
       )}
       <ProductExplorer items={items} />
-      {items.length === 0 && (
+      {items && items.length === 0 && (
         <div className="loading">
           <p> No items found </p>
+        </div>
+      )}
+      {!items || items === undefined && (
+        <div className="loading">
+          <p> Connecting to server . . . </p>
         </div>
       )}
       {items.length !== 0 && (
