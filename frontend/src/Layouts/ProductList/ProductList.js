@@ -12,7 +12,8 @@ const image =
 
 const ProductList = () => {
   const prodCtx = useContext(ProductContext);
-  const { items, removeItem } = prodCtx;
+  const { loaded, items, removeItem } = prodCtx;
+  console.log(loaded);
 
   const [itemsToShow, setItemsToShow] = useState(12);
   const [loading, setLoading] = useState(false);
@@ -77,18 +78,12 @@ const ProductList = () => {
         <Success message="Successfully removed product!" />
       )}
       <ProductExplorer items={items} />
-      {items && items.length === 0 && (
+      {!loaded && items.length === 0 && (
         <div className="loading">
           <p> No items found </p>
         </div>
       )}
-      {!items ||
-        (items === undefined && (
-          <div className="loading">
-            <p> Connecting to server . . . </p>
-          </div>
-        ))}
-      {items.length !== 0 && (
+      {!loaded && items.length !== 0 && (
         <ul className="list-wrapper">
           {items.slice(0, itemsToShow).map((item) => (
             <li key={item.id}>
@@ -100,6 +95,12 @@ const ProductList = () => {
             </li>
           ))}
         </ul>
+      )}
+      {loaded && items.length === 0 && (
+        <div className="loading">
+          <p> Connecting to server. . . </p>
+          <p> Please wait! </p>
+        </div>
       )}
       {showConfirmation && (
         <ConfirmationModal

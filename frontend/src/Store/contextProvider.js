@@ -5,6 +5,7 @@ import { bearerFetch } from "../util/BearerFatch";
 import { getAuthToken } from "../util/auth";
 
 const ProductProvider = (props) => {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [boughtItems, setBoughtItems] = useState([]);
@@ -45,11 +46,13 @@ const ProductProvider = (props) => {
 
   const fetchProductData = async () => {
     try {
+      setLoading(true)
       const response = await fetch(`https://online-store-full.onrender.com`);
       checkResponseStatus(response);
       const userData = await response.json();
       setSearchData(userData);
       setData(userData);
+      setLoading(false)
     } catch (error) {
       console.error("Error fetching product data:", error);
     }
@@ -211,6 +214,7 @@ const ProductProvider = (props) => {
   };
 
   const productContext = {
+    loaded: loading,
     items: data,
     addItem: addProductHandler,
     removeItem: removeProductHandler,
